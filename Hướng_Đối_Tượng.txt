@@ -1,0 +1,248 @@
+﻿- OOP
+
+- Kiến trúc Design Pattern(Thiết kế khuôn mẫu):
++ Các Framework nổi tiếng của PHP đều có kiểu design pattern 
+ có sẵn và riêng biệt. Design Pattern sử dụng nền tảng của
+ lập trình hướng đối tượng, áp dụng các tính chất như kế thừa
+ khởi tạo, đa hình, đóng gói,... để làm lên các cấu trúc phần
+ mềm của họ.
+
+
+- Phỏng vấn BA PHP chắc chắn có:
+	+ Thuộc tính, Phương thức là gì.
+	+ Thuộc tính tĩnh, Phương thức tĩnh là gì.
+	+ Final, Kế thừa , Clone
+.....................................................
+* Phân biệt thuộc tính và phương thức
+- Thuộc tính(Property): Là (biến) được khai báo trong Class có
+ kèm theo cơ chế: public, protected, private...
+
+
+- Phương thức(Method): Là (hàm) được khai báo trong class có kèm
+ theo cơ chế
+ VD:
+	public function getName();
+	.cơ chế  .hàm     .tên hàm
+ - Gọi đến đối tượng trong phương thức ta dùng cú pháp:
+   		$this->ten_thuoc_tinh;
+	VD: Thuộc tính $name
+		public name='NguyenVanA';
+	Phương thức getName lấy tên thuộc tính
+		public function getName(){
+			return $this->name;
+				}
+
+- 4 Đặc điểm của PHP có 4 tính chất chính:
+ + Tính đa hình(Poly morphism) 
+ + Tính trừu tượng hóa(Abstract)
+ + Tính kế thừa(inheritance)
+ + Tính đóng gói(enclapsulation) 
+
+1. Chuẩn SOLID
+- Ké kiến thức
+ + Tham trị : Tác động thay đổi giá trị biến( bên trong hàm)
+ thì ở ngoài hàm giá trị biến không thay đổi.
+
+ + Tham chiếu: Nếu 1 biến được tham chiếu bởi (biến khác) thì
+ khi (biến này) thay đổi (biến kia) sẽ thay đổi theo. Để chiếu
+ đến biến khác ta dùng biểu thức:& 
+
+2. How to use:
+- Class là gì:
+Vd: Quản lý sinh viên : class
+ 	+ Sinh viên: obj
+ 	+ Giáo viên: obj
+	+ Môn học : obj
+	+ Lớp học : obj
+
+- Class: Tạo ra nhiều Object có cùng thuộc tính và tính chất của class.
+
+- Object : Được tạo ra từ Class và mang những đặc tính của Class
+
+- Class trong PHP
+class Classname
+{
+  }
+
+- Object trong PHP
+	$obj = new className;
+
+3. Thuộc tính là gì(property):
+- Là biến được khai báo trong Class và có kèm theo cơ chế(quy
+định phạm vi truy cập của 1 thuộc tính): Public, Protected, Private
+
+4. Phương thức là gì:
+- Vd: create, edit, delete...
+- Phương thức là Hàm được khai báo trong class và có kèm theo cơ 
+chế.
+
+5. Làm thế nào để truy cập 1 thuộc tính hoặc phương thức
+- Ngoài Class:
+	+ Truy xuất thông qua đối tượng
+
+- Trong Class:
+	+ Truy xuất thông qua từ khóa $this
+
+6. Cơ chế
+- Public: Cho phép public ở mọi nơi (Trong Class, Ngoài Class
+  và Class con)
+- Protected:Cho phép public ở mọi nơi (Trong Class và Class con)
+- Private:Cho phép public ở mọi nơi (Trong Class).
+
+7. Kế thừa
+- Lớp con sử dụng lại toàn bộ thuộc tính và phương thức
+của lớp cha ( thuộc tính của lớp cha phải là public và protected)
+
+- Ưu điểm:
+ + sử dụng lại.
+
+- Nhược điểm
+ + Overide (ghi đè dữ liệu của lớp cha)
+ Xảy ra khi lớp con và lớp cha có phương thức bị trùng tên nhau
+(gây ảnh hưởng lớn đến hệ thống, mất chức năng và dữ liệu của 
+lớp cha)
+
+- Chống overide
+	parrent::Classname hàm cha
+ 
+- How to use:
+
+- sử dụng từ khóa Extends.
+
+8. Hằng số trong OOP
+- How to use:
+- const tên_hằng = value; tương tự define trong php giá trị 
+ trong hằng ko thay đổi và trong mỗi hằng chỉ có 1 giá trị, tên 
+ của hằng không được lặp lại(dùng hằng cho các giá trị không 
+ bị thay đổi(cố định)).
+
+- Hằng truy cập trong Class phải dùng từ khóa self thay vì this
+	self::Tên_Hằng
+- Truy cập hằng ngoài Class ta dùng:
+	Tên_Class::Tên_Hằng;
+
+9. Thuộc tính tĩnh và phương thức tĩnh 
+- Thuộc tính tĩnh :Biến được khai báo trong class kèm từ khóa
+ static
+
+- Phương thức tĩnh: Là hàm được khai báo trong class kèm từ khóa
+ static
+	
+- Cách truy cập
+- Ngoài Class: ClassName::Thuộc_TínhName()
+	       ClassName::Phương_ThứcName()
+
+- Bên trong Class:
+	self::Thuộc_TínhName()
+	self::Phương_ThứcName()
+
+10. Final
+- Dùng để chống ghi đè dữ liệu
+- Chống kế thừa( Không cho kế thừa)
+- How to use:
+	- Sử dụng đặt ở đầu trước khi khai báo 1 phương thức mới
+	- Sử dụng đặt ở đầu trước khi khai báo lớp ko cho phép kế thừa
+11. Clone
+- Tạo ra 1 đối tượng mới từ 1 đối tượng cũ có sẵn. Và khi có 
+ thay đổi sẽ không làm ảnh hưởng tới đối tượng cũ(Tối ưu hơn:
+ không phải khởi tạo đối tượng nhiều lần mà có thể tạo ra 1 
+ đối tượng mới không ảnh hưởng đến đối tượng cũ).
+- How to use:
+	- $obj1 = clone $obj2;
+
+12. Hàm khởi tạo và hàm hủy
+- __construct(), __destruct()
+
+- __construct(): Được chạy ngay sau khi có đối tượng được khởi 
+ tạo từ class. Chạy (trước) tất cả các Method(phương thức) của Class đó.
+
+- __construct() có tham số truyền vào (ứng dụng nhiều trong 
+ laravel frameword).
+
+- Ứng dụng vào khởi tạo Session, khởi tạo kết nối Database,1 công
+ việc gì đó....(Chức năng của nó ko phải khởi tạo mà ta dựa vào
+ cơ chế hoạt động của nó để tạo những công việc mong muốn)
+
+.............................................................
+
+- __destruct(): Được chạy ngay sau khi có đối tượng được khởi 
+ tạo từ class.Chạy (sau) tất cả các Method(phương thức) của Class đó.
+
+- Ứng dụng vào để hủy kết nối, hủy session ...(Chức năng của 
+ nó ko phải hủy mà ta dựa vào cơ chế hoạt động của nó để 
+ hủy những công việc mong muốn)
+
+13. Abtract
+- 1 Class Abstract có phương thức trừu tượng(abstract), những Class 
+ khác kế thừa class abstract đó sẽ phải định nghĩa lại những
+ phương thức có trong class abtract đó. 
+- Sử dụng abstract tạo ra những quy chuẩn (rule) cho project.
+
+- Trong lớp abstract phải có phương thức(function) abstract.
+
+- (Bản chất của abstract và interface là kế thừa) 
+
+14. Interface
+- Bản chất của interface là kế thừa, tạo ra các tính năng(implement) và 
+ chúng ta có thể sử dụng bất kỳ trong class nào.
+
+- Khai báo:
+	interface interfaceName{
+		function test();
+		function exam();
+		}
+	
+
+15. Poly Morphism(Tính đa hình)
+- Là kỹ thuật cho phép thay đổi nội dung cùng một hành vi (hàm)
+ trong hai lớp cha và con, hay nói cách khác viết lại hàm lớp 
+ cha và con (giá trị có thể thay đổi).
+- Viết lại các thuộc tính và phương thức của lớp khác.	
+
+16. Enclapsulation(Tính đóng gói)
+- Cho phép người dùng hoặc đối tượng khác thay đổi dữ liệu của
+ đối tượng hiện tại.
+
+-  Thuộc tính hay phương thức của đối tượng thông qua việc
+ giới hạn quyền truy cập(hoặc thay đổi) của giá trị thuộc tính
+ hay quyền gọi phương thức.
+
+- Nôm la tính đóng gói là không cho bên ngoài biết được bên trong
+ đối tượng có những gì hay được cài đặt như thế nào. Nếu muốn
+ thay đổi đối tượng thì phải được sự chấp nhận của đó thông qua 
+ mức độ truy cập (public,protected, private).
+
+- VD: Trong đối tượng kế toán có chức năng tính lương, chức năng
+ này cho phép tính mà các đối tượng khác không biết cách tính của 
+ nó như thế nào. Đối tượng kế toán sẽ có những chức năng dành cho 
+ các hàm kế thừa nó có thể truy xuất  vào thông qua 3 mức độ truy
+ cập để giới hạn chúng. 
+
+
+17. Phân biệt $this và self
+- Để truy xuất vào 1 thuộc tính của đối tượng ta dùng $this.
+- Để truy suất vào những thuộc tính static(thuộc tính tĩnh) ta 
+ dùng self
+
+- $this trỏ đến đối tượng hiện thời còn self trỏ đến class hiện
+ thời. Tức là $this-member cho (non static member), self trỏ đến
+ self::member cho static member. 
+
+18. Phân biệt Interface và Abstract
+- Interface: Có thể sử dụng trong bất kỳ class nào, giống như
+abstract, interface cũng kế thừa những implements đã khởi tạo.	 
+
+- Abstract: Phải có Lớp(class) Abstract và thuộc tính abstract
+(sẽ báo lỗi nếu khai báo luôn lớp abstract) muốn hiển thị
+phải có 1 class kế thừa lớp abstract và phải khai báo toàn
+bộ lớp abstract nếu k sẽ báo lỗi.	
+
+19. Constant và define 
+- Bản chất là giống nhau vì ko thể thay đổi giá trị bên trong.
+
+
+20. GET và POST
+
+
+21. SESSION và COOKIE
+
